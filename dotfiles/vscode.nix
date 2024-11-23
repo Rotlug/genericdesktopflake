@@ -1,8 +1,8 @@
-{ app-pkgs, ... }:
+{ app-pkgs, pkgs, ... }:
 {
     programs.vscode = {
         enable = true;
-        package = app-pkgs.vscodium;
+        package = app-pkgs.vscode;
 
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
@@ -161,10 +161,11 @@
             pkief.material-icon-theme
 
             ms-python.python
-            ms-pyright.pyright
+            ms-python.vscode-pylance
+
             ms-vscode.live-server
         ] ++ (with app-pkgs; [
-            (callPackage ../pkgs/flatpak-vscode {})
+            (callPackage ../pkgs/blueprint-vscode {})
         ]);
 
         mutableExtensionsDir = false;

@@ -51,6 +51,7 @@
         fi
       '';
     };
+    fish.enable = true;
   };
 
   services.flatpak.enable = true; # for gnome app dev

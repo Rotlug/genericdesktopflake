@@ -20,11 +20,13 @@ lib.mkIf (desktop == "kde")
     elisa
     plasma-browser-integration
     khelpcenter
+    discover
   ];
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # This is a workaround for a bug, remove once qt 6.8.1 releases
   environment.variables.QT_PLUGIN_PATH =
   let
     derefTheme =

@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, desktop, ... }:
 {
   environment.systemPackages = with pkgs; [
     lshw
     nvtopPackages.nvidia
     glxinfo
   ];
-
+  
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   
@@ -15,13 +15,13 @@
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
-    powerManagement.enable = true;
     powerManagement.finegrained = false;
+    powerManagement.enable = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "560.35.03";
-      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+      version = "565.57.01";
+      sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
       sha256_aarch64 = pkgs.lib.fakeSha256;
       openSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
       settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
@@ -32,5 +32,6 @@
   boot.kernelParams = [
     "nvidia_drm.modeset=1"
     "nvidia.NVreg_EnableGpuFirmware=0"
+    "nvidia_drm.fbdev=1"
   ];
 }

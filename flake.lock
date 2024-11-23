@@ -15,6 +15,22 @@
         "type": "indirect"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,17 +54,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729609999,
-        "narHash": "sha256-2Q9hfsOCbwpDPZfyFZOWnOz8heJFhnu1QlD25cucubk=",
+        "lastModified": 1731319897,
+        "narHash": "sha256-PbABj4tnbWFMfBp6OcUK5iGy1QY+/Z96ZcLpooIbuEI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b5ce3d74d2021774b00fb125231ef086e346d4e8",
+        "rev": "dc460ec76cbff0e66e269457d7b728432263166c",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "b5ce3d74d2021774b00fb125231ef086e346d4e8",
         "type": "github"
       }
     },
@@ -56,7 +72,29 @@
       "inputs": {
         "app-pkgs": "app-pkgs",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "spicetify-nix": "spicetify-nix"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "app-pkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731039348,
+        "narHash": "sha256-dOfJAal/YoibiyFvW8QKGy5w5YGVlJp0to98GPMLcaM=",
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "rev": "26b8b1dbcd22c452c1b52828eb0e283b37da2974",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "type": "github"
       }
     }
   },
