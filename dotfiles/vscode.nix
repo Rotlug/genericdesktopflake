@@ -1,8 +1,12 @@
-{ app-pkgs, pkgs, ... }:
+{ app-pkgs, ... }:
 {
+    programs.fish.shellAliases = {
+        code = "codium";
+    };
+
     programs.vscode = {
         enable = true;
-        package = app-pkgs.vscode;
+        package = app-pkgs.vscodium;
 
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
@@ -28,16 +32,14 @@
             "[typescript]" = {
                 "editor.defaultFormatter" = "esbenp.prettier-vscode";
             };
+            "[typescriptreact]" = {
+                "editor.defaultFormatter" = "esbenp.prettier-vscode";
+            };
             "[dart]"= {
                 "editor.tabSize"= 2;
                 "editor.insertSpaces" = true;
                 "editor.detectIndentation" = false;
                 "editor.suggest.insertMode" = "replace";
-                "editor.defaultFormatter" = "Dart-Code.dart-code";
-                "editor.inlayHints.enabled" = "offUnlessPressed";
-            };
-            "[typescriptreact]" = {
-                "editor.defaultFormatter"= "esbenp.prettier-vscode";
             };
             "editor.formatOnSave" = true;
             "editor.smoothScrolling" = true;
@@ -162,6 +164,7 @@
 
             ms-python.python
             ms-python.vscode-pylance
+            bradlc.vscode-tailwindcss
 
             ms-vscode.live-server
         ] ++ (with app-pkgs; [
@@ -170,6 +173,4 @@
 
         mutableExtensionsDir = false;
     };
-
-    home.sessionVariables = {"NIXOS_OZONE_WL" = "1";};
 }

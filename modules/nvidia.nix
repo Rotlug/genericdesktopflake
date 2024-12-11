@@ -1,11 +1,5 @@
-{ config, pkgs, desktop, ... }:
+{ config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    lshw
-    nvtopPackages.nvidia
-    glxinfo
-  ];
-  
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   

@@ -47,6 +47,7 @@
     ubuntu_font_family
     inter
     monaspace
+    oxygenfonts
   ];
 
   # Dconf

@@ -1,4 +1,4 @@
-{ pkgs, lib, desktop, ... }:
+{ pkgs, lib, desktop, blurPkg, ... }:
 lib.mkIf (desktop == "kde")
 {
   environment.systemPackages = with pkgs; [
@@ -8,12 +8,16 @@ lib.mkIf (desktop == "kde")
 
     # KDE Rounded Corners
     kde-rounded-corners
-
+    libsForQt5.oxygen
     # Lightly Theme
     #( callPackage ../pkgs/lightly {})
 
     # LSP Servers for Kate
-    nil
+    nixd
+    blurPkg
+
+    # Icon & Cursor Theme
+    pantheon.elementary-icon-theme
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -21,10 +25,12 @@ lib.mkIf (desktop == "kde")
     plasma-browser-integration
     khelpcenter
     discover
+    krdp
   ];
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.autoNumlock = true; # Enable numlock at login
 
   # This is a workaround for a bug, remove once qt 6.8.1 releases
   environment.variables.QT_PLUGIN_PATH =

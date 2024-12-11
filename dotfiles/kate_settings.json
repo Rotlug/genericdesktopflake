@@ -1,0 +1,25 @@
+{
+    "servers": {
+        "javascript": {
+            "command": ["vtsls", "--stdio"],
+            "highlightingModeRegex": "^JavaScript$"
+        },
+        "javascriptreact": {
+            "use": "javascript",
+            "highlightingModeRegex": "^JavaScript React.+$"
+        },
+        "typescript": {
+            "use": "javascript",
+            "highlightingModeRegex": "^TypeScript$"
+        },
+        "typescriptreact": {
+            "use": "javascript",
+            "highlightingModeRegex": "^TypeScript React.+$"
+        },
+        "nix": {
+            "command": ["nixd"],
+            "url": "https://github.com/oxalica/nil",
+            "highlightingModeRegex": "^Nix$"
+        }
+    }
+}

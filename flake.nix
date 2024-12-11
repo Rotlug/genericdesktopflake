@@ -14,6 +14,11 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "app-pkgs";
     };
+
+    forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   
   outputs = { self, home-manager, ... }@inputs:
@@ -25,6 +30,8 @@
       app-pkgs = import inputs.app-pkgs { inherit system; config.allowUnfree = true; };
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
       spiceModule = inputs.spicetify-nix.homeManagerModules.default;
+
+      blurPkg = inputs.forceblur.packages.${system}.default;
 
       user = "rotlug";
       host = "pc";
@@ -44,7 +51,7 @@
               home-manager.extraSpecialArgs = { inherit inputs user system host app-pkgs spicePkgs spiceModule; };
             }
           ];
-          specialArgs = { inherit user host desktop app-pkgs; };
+          specialArgs = { inherit user host desktop app-pkgs blurPkg; };
         };
       };
     };

@@ -9,9 +9,8 @@
       # Multimedia
       #vlc
       
-      # Games
-      #prismlauncher
-      jdk21_headless
+      jdk22
+
       #dolphin-emu
       cemu
 
@@ -20,11 +19,10 @@
 
       # Apps
       vesktop
-      godot_4
-      
+
       # (callPackage ../pkgs/chordcat {})
       appimage-run
-      #qbittorrent
+      ffmpeg
     ] ++ (with pkgs; [
       # QT Apps should use the same nixpkgs version as kde, as it avoids some bugs for now.
 
@@ -32,6 +30,7 @@
       prismlauncher
       dolphin-emu
       vlc
+      godot_4
     ]);
   };
 
@@ -55,4 +54,10 @@
   };
 
   services.flatpak.enable = true; # for gnome app dev
+
+  environment.variables = {
+    NIXOS_OZONE_WL = "1"; # Wayland support for VSCode
+  };
+
+  services.hardware.openrgb.enable = true;
 }
