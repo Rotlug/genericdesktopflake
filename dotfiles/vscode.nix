@@ -1,12 +1,8 @@
 { app-pkgs, ... }:
 {
-    programs.fish.shellAliases = {
-        code = "codium";
-    };
-
     programs.vscode = {
         enable = true;
-        package = app-pkgs.vscodium;
+        package = app-pkgs.vscode;
 
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
@@ -167,9 +163,7 @@
             bradlc.vscode-tailwindcss
 
             ms-vscode.live-server
-        ] ++ (with app-pkgs; [
-            (callPackage ../pkgs/blueprint-vscode {})
-        ]);
+        ];
 
         mutableExtensionsDir = false;
     };

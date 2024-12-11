@@ -9,20 +9,15 @@
       # Multimedia
       #vlc
       
-      jdk22
-
-      #dolphin-emu
+      jdk23
       cemu
-
-      # Utilities
-      ungoogled-chromium
 
       # Apps
       vesktop
 
-      # (callPackage ../pkgs/chordcat {})
       appimage-run
       ffmpeg
+      bottles
     ] ++ (with pkgs; [
       # QT Apps should use the same nixpkgs version as kde, as it avoids some bugs for now.
 
@@ -40,6 +35,7 @@
     gamescope.enable = true;
     gamescope.package = app-pkgs.gamescope;
     gamemode.enable = true;
+
     direnv.enable = true;
     bash = {
       interactiveShellInit = ''
@@ -55,8 +51,9 @@
 
   services.flatpak.enable = true; # for gnome app dev
 
-  environment.variables = {
+  environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Wayland support for VSCode
+    GTK_USE_PORTAL = "1"; # Native file picker for web browser
   };
 
   services.hardware.openrgb.enable = true;

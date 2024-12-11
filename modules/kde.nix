@@ -1,4 +1,4 @@
-{ pkgs, lib, desktop, blurPkg, ... }:
+{ pkgs, lib, desktop, ... }:
 lib.mkIf (desktop == "kde")
 {
   environment.systemPackages = with pkgs; [
@@ -9,12 +9,12 @@ lib.mkIf (desktop == "kde")
     # KDE Rounded Corners
     kde-rounded-corners
     libsForQt5.oxygen
+
     # Lightly Theme
     #( callPackage ../pkgs/lightly {})
 
     # LSP Servers for Kate
     nixd
-    blurPkg
 
     # Icon & Cursor Theme
     pantheon.elementary-icon-theme

@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    app-pkgs.url = "nixpkgs/nixos-24.05";
+    app-pkgs.url = "nixpkgs/nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,10 +15,10 @@
       inputs.nixpkgs.follows = "app-pkgs";
     };
 
-    forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#     forceblur = {
+#       url = "github:taj-ny/kwin-effects-forceblur";
+#       inputs.nixpkgs.follows = "nixpkgs";
+#     };
   };
   
   outputs = { self, home-manager, ... }@inputs:
@@ -31,7 +31,7 @@
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
       spiceModule = inputs.spicetify-nix.homeManagerModules.default;
 
-      blurPkg = inputs.forceblur.packages.${system}.default;
+      # blurPkg = inputs.forceblur.packages.${system}.default;
 
       user = "rotlug";
       host = "pc";
@@ -51,7 +51,7 @@
               home-manager.extraSpecialArgs = { inherit inputs user system host app-pkgs spicePkgs spiceModule; };
             }
           ];
-          specialArgs = { inherit user host desktop app-pkgs blurPkg; };
+          specialArgs = { inherit user host desktop app-pkgs; };
         };
       };
     };

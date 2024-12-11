@@ -66,6 +66,8 @@
     p7zip
     nano
     unar
+
+    pantheon.elementary-wallpapers # wallpapers :)
   ];
 
   system.stateVersion = "24.05";
@@ -75,12 +77,12 @@
     "flakes"
   ];
 
-  programs.nix-ld = {
-    enable = true;
-    libraries =
-      (app-pkgs.steam-run.fhsenv.args.multiPkgs app-pkgs)
-      ++ (with app-pkgs; [
-        xorg.libxkbfile
-      ]);
-  };
+#   programs.nix-ld = {
+#     enable = true;
+#     libraries =
+#       (app-pkgs.steam-run-free.fhsenv.args.multiPkgs app-pkgs)
+#       ++ (with app-pkgs; [
+#         xorg.libxkbfile
+#       ]);
+#   };
 }
